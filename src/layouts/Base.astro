@@ -1,0 +1,154 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Transform your life with the Precious Fix My Life Ebook Series — practical self-help guides for real people.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Precious Fix My Life</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Precious Fix My Life</a>
+      <nav>
+        <a href="/">Books</a>
+        <a href="/#lead-magnet">Free Guide</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 Precious Fix My Life. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style>
+  :root {
+    --color-primary: #6B4EFF;
+    --color-primary-dark: #4A2FD4;
+    --color-accent: #FF6B9D;
+    --color-bg: #FDF9FF;
+    --color-surface: #FFFFFF;
+    --color-text: #1A1A2E;
+    --color-text-muted: #6B7280;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(107, 78, 255, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main { flex: 1; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .site-header {
+    background: var(--color-surface);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .site-header nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  .site-header nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .site-header nav a:hover {
+    color: var(--color-primary);
+  }
+
+  footer {
+    background: var(--color-text);
+    color: rgba(255,255,255,0.6);
+    padding: 40px 0;
+    margin-top: 80px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-inner p { font-size: 0.875rem; }
+
+  .footer-nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-nav a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-nav a:hover { color: white; }
+
+  @media (max-width: 640px) {
+    .site-header nav { gap: 16px; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>

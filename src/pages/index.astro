@@ -1,0 +1,399 @@
+---
+import Base from '../layouts/Base.astro';
+import { books } from '../data/books';
+---
+
+<Base title="Precious Fix My Life — Self-Help Ebooks">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Precious Fix My Life Series</span>
+      <h1>Know Your Rights.<br /><em>Protect Your Future.</em></h1>
+      <p>Practical self-help guides that break down complex legal and workplace topics into clear, actionable steps. No jargon. No attorney fees. Just the information you need to fix what\'s broken in your life.</p>
+      <div class="hero-cta">
+        <a href="#books" class="btn-primary">See the Books</a>
+        <a href="#lead-magnet" class="btn-secondary">Get Free Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Books Grid -->
+  <section class="books-section" id="books">
+    <div class="container">
+      <h2 class="section-title">Available Editions</h2>
+      <p class="section-sub">Two focused guides covering the topics that people desperately need clarity on — Medicaid asset protection and FMLA workplace rights.</p>
+      <div class="books-grid">
+        {books.map(book => (
+          <article class="book-card">
+            <div class="book-cover" style={`background: ${book.coverGradient};`}>
+              <span class="book-icon">📋</span>
+              <div class="book-price">${book.price}</div>
+            </div>
+            <div class="book-info">
+              <div class="book-tags">
+                {book.tags.slice(0, 2).map(tag => <span class="tag">{tag}</span>)}
+              </div>
+              <h3>{book.title}</h3>
+              <p class="book-subtitle">{book.subtitle}</p>
+              <p class="book-desc">{book.description.slice(0, 110)}...</p>
+              <div class="book-actions">
+                <a href={`/books/${book.slug}`} class="btn-outline">Learn More</a>
+                <a href={book.gumroadLink} target="_blank" rel="noopener" class="btn-buy">
+                  Buy — ${book.price}
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet -->
+  <section class="lead-magnet-section" id="lead-magnet">
+    <div class="container">
+      <div class="lead-magnet-card">
+        <div class="lm-badge">Free Download</div>
+        <h2>The Medicaid Asset Protection Checklist</h2>
+        <p>A one-page breakdown of which assets are exempt from Medicaid estate recovery — and the first 3 steps you can take today to protect your family's wealth. Join thousands who've used this to start taking action.</p>
+        <form class="lm-form" action="https://app.convertkit.com/forms/ce04d30f46/subscriptions" method="post">
+          <input type="email" name="email_address" placeholder="Your email address" required />
+          <button type="submit" class="btn-primary">Send Me The Free Checklist</button>
+        </form>
+        <p class="lm-note">No spam. Unsubscribe anytime. Your email stays yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Readers Are Saying</h2>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial">
+          <p>"I had no idea Medicaid could come after my mom's house after she passed. This book saved my family tens of thousands."</p>
+          <cite>— Maria R., Reader</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"The FMLA book made something my HR department told me was impossible turn out to be completely doable. I got my leave approved."</p>
+          <cite>— David K., Reader</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"Clear, direct, and actually understandable. I recommend these to everyone I know who's dealing with Medicaid planning."</p>
+          <cite>— Sandra T., Reader</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: linear-gradient(180deg, #F0EDFF 0%, var(--color-bg) 100%);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--color-text);
+  }
+
+  .hero h1 em {
+    color: var(--color-primary);
+    font-style: normal;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 580px;
+    margin: 0 auto 36px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .btn-primary:hover { background: var(--color-primary-dark); }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--color-primary);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-primary);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--color-primary); color: white; }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--color-primary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-primary);
+    transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+
+  .btn-outline:hover { background: var(--color-primary); color: white; }
+
+  .btn-buy {
+    display: inline-block;
+    background: var(--color-accent);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+
+  .btn-buy:hover { filter: brightness(0.9); }
+
+  /* Books Section */
+  .books-section { padding: 80px 0; }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: 48px;
+  }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .book-card {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+  }
+
+  .book-card:hover { transform: translateY(-4px); }
+
+  .book-cover {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+
+  .book-icon { font-size: 3rem; }
+
+  .book-price {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .book-info { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+  .book-tags { display: flex; gap: 8px; margin-bottom: 12px; }
+
+  .tag {
+    background: #F0EDFF;
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .book-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+
+  .book-subtitle {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .book-desc {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .book-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Lead Magnet */
+  .lead-magnet-section { padding: 60px 0; }
+
+  .lead-magnet-card {
+    background: linear-gradient(135deg, #6B4EFF 0%, #9B7DFF 100%);
+    border-radius: 20px;
+    padding: 60px;
+    text-align: center;
+    color: white;
+  }
+
+  .lm-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .lead-magnet-card h2 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+  }
+
+  .lead-magnet-card p {
+    max-width: 500px;
+    margin: 0 auto 32px;
+    opacity: 0.9;
+    font-size: 1.05rem;
+  }
+
+  .lm-form {
+    display: flex;
+    gap: 12px;
+    max-width: 460px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .lm-form input {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-family: var(--font-body);
+  }
+
+  .lm-form .btn-primary {
+    background: white;
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  .lm-form .btn-primary:hover { background: #f0f0f0; }
+
+  .lm-note {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  /* Testimonials */
+  .testimonials { padding: 60px 0 80px; }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .testimonial {
+    background: var(--color-surface);
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .testimonial p {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .testimonial cite {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-style: normal;
+  }
+</style>

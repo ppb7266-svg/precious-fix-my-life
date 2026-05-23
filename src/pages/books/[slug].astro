@@ -1,0 +1,255 @@
+---
+import Base from '../../layouts/Base.astro';
+import { books } from '../../data/books';
+
+export async function getStaticPaths() {
+  return books.map(book => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+---
+
+<Base title={book.title} description={book.description}>
+  <section class="book-detail">
+    <div class="container">
+      <div class="book-detail-grid">
+        <div class="book-cover-hero" style={`background: ${book.coverGradient};`}>
+          <span class="book-icon-lg">📖</span>
+          <div class="book-price-lg">${book.price}</div>
+        </div>
+
+        <div class="book-content">
+          <div class="book-tags">
+            {book.tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+          <h1>{book.title}</h1>
+          <p class="subtitle">{book.subtitle}</p>
+          <p class="description">{book.description}</p>
+
+          <div class="chapters">
+            <h2>What's Inside</h2>
+            <ul>
+              {book.chapters.map((ch, i) => (
+                <li>
+                  <span class="ch-num">{String(i + 1).padStart(2, '0')}</span>
+                  {ch}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="cta-group">
+            <a href={book.gumroadLink} target="_blank" rel="noopener" class="btn-buy-hero">
+              Buy Now — ${book.price} (Instant Download)
+            </a>
+            <p class="cta-note">Secure payment via Gumroad. Get instant PDF access.</p>
+          </div>
+
+          <div class="guarantee">
+            <span class="guarantee-icon">✓</span>
+            <span>30-Day Money-Back Guarantee — No Questions Asked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet -->
+  <section class="related-lead">
+    <div class="container">
+      <div class="mini-lead-card">
+        <div>
+          <h3>Get The Free Medicaid Asset Protection Checklist</h3>
+          <p>A one-page guide to exempt assets and the first steps to protect your family's wealth. Goes great with any book in the series.</p>
+        </div>
+        <form action="https://app.convertkit.com/forms/ce04d30f46/subscriptions" method="post">
+          <input type="email" name="email_address" placeholder="Your email" required />
+          <button type="submit" class="btn-primary">Get It Free</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .book-detail { padding: 60px 0; }
+
+  .book-detail-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .book-cover-hero {
+    border-radius: 16px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: sticky;
+    top: 100px;
+  }
+
+  .book-icon-lg { font-size: 5rem; }
+
+  .book-price-lg {
+    background: rgba(0,0,0,0.3);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .book-tags { display: flex; gap: 8px; margin-bottom: 16px; }
+
+  .tag {
+    background: #F0EDFF;
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .book-content h1 {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .chapters h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+  }
+
+  .chapters ul { list-style: none; }
+
+  .chapters li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #F0EDFF;
+    font-size: 0.95rem;
+  }
+
+  .ch-num {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    min-width: 28px;
+  }
+
+  .cta-group {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-buy-hero {
+    display: block;
+    background: var(--color-accent);
+    color: white;
+    padding: 18px 36px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-align: center;
+    transition: filter 0.2s;
+  }
+
+  .btn-buy-hero:hover { filter: brightness(0.9); }
+
+  .cta-note {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 14px;
+    background: #F0FDF4;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #166534;
+    font-weight: 500;
+  }
+
+  .guarantee-icon { font-weight: 700; }
+
+  /* Related Lead Magnet */
+  .related-lead { padding: 60px 0; }
+
+  .mini-lead-card {
+    background: #F0EDFF;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .mini-lead-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+  }
+
+  .mini-lead-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+  .mini-lead-card form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .mini-lead-card input {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    min-width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    .book-detail-grid { grid-template-columns: 1fr; }
+    .book-cover-hero { height: 260px; position: static; }
+  }
+</style>
