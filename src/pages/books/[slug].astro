@@ -16,8 +16,8 @@ const { book } = Astro.props;
   <section class="book-detail">
     <div class="container">
       <div class="book-detail-grid">
-        <div class="book-cover-hero" style={`background: ${book.coverGradient};`}>
-          <span class="book-icon-lg">📖</span>
+        <div class="book-cover-hero" style={book.coverImage ? `background-image: url('${book.coverImage}'); background-size: cover; background-position: center;` : `background: ${book.coverGradient};`}>
+          {!book.coverImage && <span class="book-icon-lg">📖</span>}
           <div class="book-price-lg">${book.price}</div>
         </div>
 

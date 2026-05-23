@@ -25,8 +25,8 @@ import { books } from '../data/books';
       <div class="books-grid">
         {books.map(book => (
           <article class="book-card">
-            <div class="book-cover" style={`background: ${book.coverGradient};`}>
-              <span class="book-icon">📋</span>
+            <div class="book-cover" style={book.coverImage ? `background-image: url('${book.coverImage}'); background-size: cover; background-position: center;` : `background: ${book.coverGradient};`}>
+              {!book.coverImage && <span class="book-icon">📋</span>}
               <div class="book-price">${book.price}</div>
             </div>
             <div class="book-info">

@@ -5,6 +5,7 @@ export interface Book {
   description: string;
   price: number;
   coverGradient: string;
+  coverImage?: string;
   chapters: string[];
   tags: string[];
   gumroadLink: string;
@@ -19,6 +20,7 @@ export const books: Book[] = [
     description: 'A practical guide to protecting your assets from Medicaid estate recovery. If you or a loved one has ever received Medicaid benefits, this book walks you through what estate recovery is, which states enforce it, which assets are exempt, and exactly what steps you can take NOW to shield your family\'s wealth — without expensive attorneys.',
     price: 29,
     coverGradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    coverImage: 'https://public-files.gumroad.com/n7rc0c7o3tumz868ssv25429duuh',
     chapters: [
       'What Medicaid Estate Recovery Actually Is',
       'Which States Enforce It (And Which Don\'t)',
@@ -42,6 +44,7 @@ export const books: Book[] = [
     description: 'Know your workplace rights — and use them without fear. This guide explains the Family and Medical Leave Act in plain language: who qualifies, how long job protection lasts, how to file paperwork correctly, what to do if your employer retaliates, and how to navigate medical leave without destroying your career.',
     price: 29,
     coverGradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    coverImage: 'https://public-files.gumroad.com/j6keph9onheyua3nhn2giqtof26d',
     chapters: [
       'Understanding FMLA: Your Rights at a Glance',
       'Who Qualifies and How the 12-Month Rule Works',
