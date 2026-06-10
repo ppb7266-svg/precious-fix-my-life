@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Books — OmniVerse Publishing</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-header {
+      background: linear-gradient(135deg, var(--deep-teal), var(--terracotta));
+      color: var(--text-light);
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+    .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .page-header p { opacity: 0.9; font-size: 1.1rem; }
+    .format-filter { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; flex-wrap: wrap; }
+    .format-filter a { padding: 0.5rem 1.2rem; border-radius: 25px; text-decoration: none; font-size: 0.9rem; transition: all 0.3s; }
+    .format-filter a.active { background: var(--deep-teal); color: white; }
+    .format-filter a:not(.active) { background: var(--cream); color: var(--deep-teal); border: 1px solid #ddd; }
+    .format-filter a:hover:not(.active) { border-color: var(--deep-teal); }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">Omni<span>Verse</span> Books</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="books.html" style="color:var(--soft-gold);">Books</a>
+      <a href="for-readers.html">For Readers</a>
+      <a href="partners.html">For Partners</a>
+      <a href="about.html">About</a>
+      <a href="dashboard.html" style="background:var(--soft-gold);color:var(--deep-teal);padding:0.5rem 1.2rem;border-radius:25px;font-weight:bold;">Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Our Books</h1>
+    <p>Novels · Novellas · Children's Books · Picture Books · Coloring Books · Journals · Workbooks · And More</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="format-filter">
+    <a href="#" class="active">All Formats</a>
+    <a href="#">Novels</a>
+    <a href="#">Children's Books</a>
+    <a href="#">Coloring & Activity</a>
+    <a href="#">Journals & Planners</a>
+    <a href="#">Free Downloads</a>
+  </div>
+
+  <section style="padding-top:0;">
+    <h2 style="color:var(--deep-teal);margin-bottom:1.5rem;">📖 Fiction</h2>
+    <div class="book-grid">
+      <div class="book-card">
+        <img src="../covers/starlight-tea-shop/final/starlight-tea-shop-kindle.png" alt="The Starlight Tea Shop" style="height:350px;">
+        <div class="card-body">
+          <h3>The Starlight Tea Shop</h3>
+          <p class="author">Lily Whitethorn</p>
+          <p>Book 1 of the Starlight Cottage series. A retired adventurer, a magical tea shop, and a teleporting cat.</p>
+          <div class="tags">
+            <span class="tag">Cozy Fantasy</span>
+            <span class="tag">Novella</span>
+            <span class="tag">35K words</span>
+          </div>
+          <div class="buy-links">
+            <a href="#">Kindle $4.99</a>
+            <a href="#">Paperback $12.99</a>
+            <a href="#">Hardcover $19.99</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="color:var(--deep-teal);margin-bottom:1.5rem;">📝 Coming Soon</h2>
+    <div class="book-grid">
+      <div class="book-card">
+        <div style="height:350px;display:flex;align-items:center;justify-content:center;background:var(--cream);">
+          <span style="font-size:3rem;">📚</span>
+        </div>
+        <div class="card-body">
+          <h3>The Moonlit Bakery</h3>
+          <p class="author">Lily Whitethorn</p>
+          <p>Book 2 in the Starlight Cottage series. A bakery by moonlight, new recipes, and old friends.</p>
+          <div class="tags"><span class="tag">Coming 2025</span></div>
+          <div class="buy-links"><a href="#" style="background:#999;">Notify Me</a></div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div style="height:350px;display:flex;align-items:center;justify-content:center;background:var(--cream);">
+          <span style="font-size:3rem;">🎨</span>
+        </div>
+        <div class="card-body">
+          <h3>Cozy Coloring: Whimsical Worlds</h3>
+          <p class="author">Lily Whitethorn</p>
+          <p>A coloring book featuring scenes from Seaglass Cove and beyond.</p>
+          <div class="tags"><span class="tag">Coming 2025</span></div>
+          <div class="buy-links"><a href="#" style="background:#999;">Notify Me</a></div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div style="height:350px;display:flex;align-items:center;justify-content:center;background:var(--cream);">
+          <span style="font-size:3rem;">📓</span>
+        </div>
+        <div class="card-body">
+          <h3>Cozy Nights: A Guided Reading Journal</h3>
+          <p class="author">Lily Whitethorn</p>
+          <p>A beautiful journal for tracking your cozy reading journey.</p>
+          <div class="tags"><span class="tag">Coming 2025</span></div>
+          <div class="buy-links"><a href="#" style="background:#999;">Notify Me</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <div>
+      <h4>OmniVerse Publishing</h4>
+      <p style="font-size:0.9rem;color:#777;">An independent publishing studio crafting heartwarming books.</p>
+    </div>
+    <div>
+      <h4>Books</h4>
+      <a href="books.html">All Titles</a>
+      <a href="#">The Starlight Tea Shop</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="partners.html">Rights & Licensing</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="#">TikTok</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 OmniVerse Publishing</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
